@@ -7,7 +7,6 @@ var util = require('util'),
 
 var account = process.env.TWITTER_ACCOUNT,
     port = process.env.PORT,
-    hostname = (process.env.HOSTNAME || '127.0.0.1'),
     public_dir = 'public';
 
 var twit = new twitter({
@@ -54,6 +53,6 @@ http.createServer(function (request, response) {
     });
   });
 
-}).listen(port, hostname);
+}).listen(port);
 
-console.log('Server running at http://' + hostname + ':' + port + '/');
+console.log('Server running on port', port);
