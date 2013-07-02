@@ -17,9 +17,6 @@ var twit = new twitter({
     access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
-
-console.log(process.cwd());
-
 twit.stream('user', { track: account }, function(stream) {
   stream.on('data', function(data) {
     console.log(util.inspect(data));
