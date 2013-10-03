@@ -5,10 +5,26 @@ var util = require('util'),
     path = require("path"),
     fs = require("fs");
 
+// App settings
 var account = process.env.TWITTER_ACCOUNT,
     port = process.env.PORT,
     public_dir = 'public';
 
+// Persistence
+var redis;
+
+if (process.env.REDISTOGO_URL) {
+  var redisOptions = url.parse(process.env.REDISTOGO_URL);
+  redis = require("redis").createClient(redisOptions.port, redisOptions.hostname);
+} else {
+  redis = require("redis").createClient();
+}
+
+redis.on("error", function (err) {
+  console.log("Error " + err);
+});
+
+// Twitter
 var twit = new twitter({
     consumer_key: process.env.CONSUMER_KEY,
     consumer_secret: process.env.CONSUMER_SECRET,
@@ -22,8 +38,8 @@ twit.stream('user', { track: account }, function(stream) {
   });
 });
 
+// Simple HTTP server
 http.createServer(function (request, response) {
-  
   var uri = url.parse(request.url).pathname,
       filename = path.join([process.cwd(), public_dir].join('/'), uri);
   
