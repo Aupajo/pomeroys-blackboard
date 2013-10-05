@@ -19,7 +19,7 @@ redis.on("error", function (err) {
 });
 
 // Twitter
-var twitterAccount = process.env.TWITTER_ACCOUNT;
+var twitterAccount = process.env.TWITTER_ID;
 
 var twit = new twitter({
     consumer_key: process.env.CONSUMER_KEY,
@@ -28,7 +28,7 @@ var twit = new twitter({
     access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
-twit.stream('user', { track: twitterAccount }, function(stream) {
+twit.stream('statuses/filter', { follow: twitterID }, function(stream) {
   stream.on('data', function(data) {
     redis.set('lastTweet', JSON.stringify(data));
   });
