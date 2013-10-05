@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "dependencies": {
     "twitter": "0.1.x",
-    "redis": "0.8.x"
+    "redis": "0.8.x",
+    "express": "3.4.x",
+    "ejs": "0.8.x"
   },
   "engines": {
     "node": "0.10.x",
