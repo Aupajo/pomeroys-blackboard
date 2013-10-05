@@ -43,12 +43,14 @@ app.use(express.logger());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-  var locals = {
-    lastTweet: redis.get('lastTweet'),
-    inspect: util.inspect
-  };
+  redis.get('lastTweet', function(err, reply) {
+    var locals = {
+      lastTweet: JSON.parse(reply),
+      inspect: util.inspect
+    };
 
-  response.render('index.ejs', locals);
+    response.render('index.ejs', locals);
+  });
 });
 
 app.listen(port, function() {
