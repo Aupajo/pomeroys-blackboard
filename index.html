@@ -7,35 +7,40 @@
       body {
         background: black;
         color: white;
-        font: 14pt/1.6em "Helvetica Neue", Helvetica, sans-serif;
+        font: 14pt "Helvetica Neue", Helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
-        width: 500px;
-        margin: 4em auto;
+        margin: 0;
       }
       
-      .sign-off {
-        color: #666;
-        text-decoration: none;
-      }
+      figure, p { margin: 0; }
       
-      .sign-off:hover {
-        color: #00b6ff;
+      img { width: 100%; }
+      
+      p {
+        background: rgba(0, 0, 0, 0.8);
+        display: block;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-weight: bold;
+        line-height: 60px;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     
-    <h1>Back soon.</h1>
-    
-    <p>Twitter has recently discontinued its public search API, making it impossible to provide this service as it was.</p>
-    
-    <p>Obviously, I'm a bit miffed, as you probably are.</p>
-    
-    <p>Between you and me, the technological decisions that Twitter has made over the last two years have been very disappointing. It's an unfortunate truth that Twitter's interests no longer lie with the developer community that helped make it what it is, and this is just another app caught out in the march for “progress” (for whom?).</p>
-    
-    <p>Take heart, I will try to resume this service soon. It's just going to require a little time and re-working first.</p>
-    
-    <p><a href="https://twitter.com/aupajo" class="sign-off">&mdash; @aupajo</a></p>
+    <figure id="current-board">
+      <img src="https://pbs.twimg.com/media/BdbcsdXCAAAtUSm.jpg:orig">
+      <p>posted <time datetime="2014-01-08T16:57:00+13:00"></time></p>
+    </figure>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="jquery.timeago.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      $('time').timeago();
+    </script>
     
   </body>
 </html>
